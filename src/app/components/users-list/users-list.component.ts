@@ -19,8 +19,9 @@ export class UsersListComponent implements OnInit {
   // o construtor usar para  injecao depencia
   ngOnInit() {
      
-    setTimeout(()=>{
-    this.users=[
+
+
+this.users=[
       {
         firstname: 'Adilson',
     lastname: 'Futa',
@@ -53,32 +54,20 @@ address: {
     state: 'Distrito de Urbano de Luanda'
 }
 }
-
 ]; 
 
 
 this.loaded=true;
-},2000);
-
-this.showExtended=false;
+//this.showExtended=false;
 
 this.addUser( 
   {
     firstname: 'Afonso',
-    lastname: 'Futa',
-    age: 13,
-    address: {
-    street: ' Km 14 A',
-    city: 'Viana',
-    state: 'Distrito de Urbano de Luanda'
-    }
-    }
-
- )
+    lastname: 'Futa'
+   });
 
 
 }
-
 
 
   addUser( user: User){
@@ -91,7 +80,18 @@ this.addUser(
 
 
  
-  /*this.addUser( {
+ 
+}
+
+
+/*    setTimeout(()=>{  
+    codigo carregadni fica aqui   
+   
+},2000);
+*/
+
+
+ /*this.addUser( {
       firstname: 'Afonso',
   lastname: 'Futa',
   age: 13,
@@ -101,4 +101,3 @@ this.addUser(
       state: 'Distrito de Urbano de Luanda'
   }
   })*/
-}
