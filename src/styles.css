@@ -4,4 +4,6 @@
 
 @import '../node_modules/bootstrap/dist/css/bootstrap.css';
 
+/* @import '../node_modules/@fortawesome/fontawesome-free/css/fontawesome.css'; */
+
 /* apos a configuração no angular.json aqui chamamos o link afim de ser reconhecido em toda parte do projecto...  */

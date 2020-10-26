@@ -1,27 +1,31 @@
 <h2> Usuarios </h2>
 
-<button [disabled]="!enableAdd" class="btn btn-ligth btn-block mb-3" [ngClass]="currentClasses">Add new User</button>
+<button (click)="addUser({
+  firstname:'Mary',
+  lastname: 'Futa',
+  isActive: true
+})" [disabled]="!enableAdd" class="btn btn-block mb-3">Add new User</button>
 
 <ul class="list-unstyled" *ngIf="loaded && users?.length > 0">
 
-  <li class="card card-body mb-2" *ngFor="let user of users"
-  [class.bg-light]="user.isActive" [style.border-color]="user.isActive ? 'green': ''">
-    <div class="row">
-      <div class="col-sm-4">
-        <img *ngIf="user.image" [src]="user.image" class="img-fluid" alt="">
-      </div>
-      <div class="col-sm-8">
-        <h3 [ngStyle]="currentStyles">{{user.firstname | uppercase}} {{user.lastname |uppercase }}</h3>
-        <ul class="list-group" *ngIf="showExtended && user.age && user.address">
-          <li class="list-group-item"> Age: {{user.age }}</li>
-          <li class="list-group-item"> Address: {{user.address.street }} {{user.address.city}} , {{user.address.state}}
-          </li>
-          <li class="list-group-item">Balance: {{ user.balance | currency :" AOA ":"symbol"}}</li>
+  <li class="card card-body mb-2" *ngFor="let user of users" [class.bg-light]="user.isActive"
+    [style.border-color]="user.isActive ? 'green': ''">
 
-          <li class="list-group-item">Joined: {{ user.registered | date }}</li>
-        </ul>
-      </div>
-    </div>
+    <h3>{{user.firstname | uppercase}} {{user.lastname |uppercase }}
+      <small><button class="btn btn-dark btn-sm" (click)="toggleHide(user)">
+        <i class="fas fa-plus"></i>
+        </button></small>
+
+      <!-- no lugar do toghide= user.hide=!user.hide -->
+    </h3>
+    <ul class="list-group" *ngIf="!user.hide && user.age && user.address">
+      <li class="list-group-item"> Age: {{user.age }}</li>
+      <li class="list-group-item"> Address: {{user.address.street }} {{user.address.city}} , {{user.address.state}}
+      </li>
+      <li class="list-group-item">Joined: {{ user.registered | date }}</li>
+    </ul>
+
+
   </li>
 </ul>
 
