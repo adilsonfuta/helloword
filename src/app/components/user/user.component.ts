@@ -20,17 +20,12 @@ export class UserComponet implements OnInit {
         this.user= {
             firstname: 'Adilson',
         lastname: 'Futa',
-        age: 28,
-        address: {
-            street: 'Viana Km 14 A',
-            city: 'Luanda',
-            state: 'Distrito de Urbano de Luanda'
-        }
+       email:'geral@nova.com'
         }
     }
 
     showAge(){
-                return this.user.age;
+                return this.user.email;
     }
 
 }
