@@ -9,10 +9,25 @@ import { User } from 'src/app/model/User';
 })
 export class UsersListComponent implements OnInit {
 
+   // isActive:true,
+    // registered: new Date('01/02/2020 08:30:00'),
+    // hide:true
+
+  user:User={
+    firstname: '',
+    lastname: '',
+    age: null,
+    address: {
+        street: '',
+        city: '',
+        state: ''
+    }
+  };
   users: User[];
   showExtended: boolean=true;  
   loaded: boolean= false; 
-  enableAdd:boolean=true;
+  enableAdd:boolean=false;
+  showUserForm:boolean=false;
 
 
 //  o construtor usar 
@@ -86,12 +101,45 @@ this.addUser(
 }
 
 
-  addUser( user: User){
-    this.users.push(user);
+  // addUser( user: User){
+  //   this.users.push(user);
+  // }
+
+
+  addUser( ){
+    this.user.isActive=true;
+    this.user.registered=new Date();
+        this.users.unshift(this.user);
+
+    this.user={
+      firstname: '',
+      lastname: '',
+      age: null,
+      address: {
+          street: '',
+          city: '',
+          state: ''
+      }
+    };
   }
 
   toggleHide(u: User){    
     u.hide=!u.hide;
+  }
+
+  onSubmit(e){
+
+    console.log("1212")
+    e.preventDefault();
+
+  }
+
+  fireEvent(e){
+
+    console.log(e.type);
+    console.log(e.target.value);
+ 
+
   }
  
 }
