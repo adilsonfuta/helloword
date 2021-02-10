@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { User } from 'src/app/model/User';
+import {DataService} from '../../service/data.service';
 
 
 @Component({
@@ -26,66 +27,29 @@ export class UsersListComponent implements OnInit {
   showUserForm: boolean = false;
   @ViewChild('userForm') form: any;
 
+  data:any;
+
 
   //  o construtor usar 
   //  para  injecao depencia
-  constructor() {
 
-  }
+  constructor(private dataService:DataService) {     }
 
   // permite ver o lifecicle do 
   //components podes usar ele para req ajax
 
   ngOnInit() {
-    this.users = [
-      {
-        firstname: 'Adilson',
-        lastname: 'Futa',
-        email: 'adilson@gmail.com',
-        isActive: true,
-        registered: new Date('01/02/2020 08:30:00'),
-        hide: true
-      },
 
-      {
-        firstname: 'Irene',
-        lastname: 'Futa',
-        email: 'irene@gmail.com',
-        isActive: false,
-        registered: new Date('03/10/2020 18:20:00'),
-        hide: true
-      },
-
-      {
-        firstname: 'Luzilda',
-        lastname: 'Futa',
-        email: 'luzilda@gmail.com',
-        isActive: true,
-        registered: new Date('11/08/2020 10:30:00'),
-        hide: true
-      }
-    ];
-
-
+    this.users=this.dataService.getUsers();
     this.loaded = true;
     //this.showExtended=false;
+  
+    this.dataService.testandoGetData().subscribe(data=>
+      {
+      console.log(data)
+    });
 
   }
-
-  // FUNCOES EXTRAS 
-
-
-  // addUser() {
-  //   this.user.isActive = true;
-  //   this.user.registered = new Date();
-  //   this.users.unshift(this.user);
-
-  //   this.user = {
-  //     firstname: '',
-  //     lastname: '',
-  //     email: ''
-  //   };
-  // }
 
   toggleHide(u: User) {
     u.hide = !u.hide;
@@ -98,7 +62,8 @@ export class UsersListComponent implements OnInit {
       value.isActive = true;
       value.registered = new Date();
       value.hide = true;
-      this.users.unshift(value);
+     
+      this.dataService.addUser(value)
       this.form.reset();
     }
   }
@@ -109,6 +74,21 @@ export class UsersListComponent implements OnInit {
 
 
 /*
+
+  FUNCOES EXTRAS 
+  addUser() {
+    this.user.isActive = true;
+    this.user.registered = new Date();
+    this.users.unshift(this.user);
+
+    this.user = {
+      firstname: '',
+      lastname: '',
+      email: ''
+    };
+  }
+
+
   fireEvent(e) {
     console.log(e.type);
     console.log(e.target.value);
@@ -129,7 +109,6 @@ addUser( user: User){
 
 },2000);
 */
-
 
 /*this.addUser( {
      firstname: 'Afonso',
