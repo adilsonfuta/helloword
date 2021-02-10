@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { User } from 'src/app/model/User';
-import {DataService} from '../../service/data.service';
+import {UserService} from '../../service/user.service';
 
 
 @Component({
@@ -33,21 +33,25 @@ export class UsersListComponent implements OnInit {
   //  o construtor usar 
   //  para  injecao depencia
 
-  constructor(private dataService:DataService) {     }
+  constructor(private userService:UserService) {     }
 
   // permite ver o lifecicle do 
   //components podes usar ele para req ajax
 
   ngOnInit() {
 
-    this.users=this.dataService.getUsers();
-    this.loaded = true;
+    this.userService.getUsers().subscribe(users=>{
+        this.users=users;
+          this.loaded = true;
+    });
+
+  
     //this.showExtended=false;
   
-    this.dataService.testandoGetData().subscribe(data=>
-      {
-      console.log(data)
-    });
+    // this.dataService.testandoGetData().subscribe(data=>
+    //   {
+    //   console.log(data)
+    // });
 
   }
 
@@ -63,7 +67,7 @@ export class UsersListComponent implements OnInit {
       value.registered = new Date();
       value.hide = true;
      
-      this.dataService.addUser(value)
+      this.userService.addUser(value)
       this.form.reset();
     }
   }

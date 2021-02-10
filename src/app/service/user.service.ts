@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import {User} from '../model/User';
 import { Observable } from 'rxjs';
+import { of }  from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class DataService {
+export class UserService {
 
   users:User[];
   data:Observable<any>;
@@ -48,32 +49,41 @@ export class DataService {
     this.users.unshift(user);
   }
 
-  getUsers():User[] {
-    console.log('Fecthing user from service json');
-    return this.users;
+  getUsers():Observable<User[]> {
+   // console.log('Fecthing user from service json');
+    return of(this.users);
   }
 
-  testandoGetData(){
-        this.data=new Observable(observer=>{
-      setTimeout(()=>{
-        observer.next(1);
-      },1000);
 
-      setTimeout(()=>{
-        observer.next(2);
-      },2000);
 
-      setTimeout(()=>{
-        observer.next(3); 
-      },3000);
-
-      setTimeout(()=>{
-        observer.next(4);
-      },4000);
-    
-    });
-    
-    return this.data; 
-  }
+  
 
 }
+
+
+// testandoGetData(){
+  //       this.data=new Observable(observer=>{
+  //     setTimeout(()=>{
+  //       observer.next(1);
+  //     },1000);
+
+  //     setTimeout(()=>{
+  //       observer.next(2);
+  //     },2000);
+
+  //     setTimeout(()=>{
+  //       observer.next(3); 
+  //     },3000);
+
+  //     setTimeout(()=>{
+  //       observer.next(4);
+  //     },4000);
+
+  //     setTimeout(()=>{
+  //       observer.next({nome:'Adilson Futa'});
+  //     },4000);
+    
+  //   });
+    
+  //   return this.data; 
+  // }
