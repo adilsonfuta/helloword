@@ -12,20 +12,29 @@ const httpOptions={
 })
 export class PostService {
 
-  postsUrl:string='https://jsonplaceholder.typicode.com/posts';
+  Url:string='https://jsonplaceholder.typicode.com/posts';
 
   constructor(private http: HttpClient) { }
 
   getPost():Observable<Post[]>{
-      return  this.http.get<Post[]>(this.postsUrl);
+      return  this.http.get<Post[]>(this.Url);
   }
 
   savePost(post:Post):Observable<Post> {
-        return this.http.post<Post>(this.postsUrl,post,httpOptions);
+        return this.http.post<Post>(this.Url,post,httpOptions);
   }
 
   updatePost(post:Post):Observable<Post> {  
-    const updateUrl=`${this.postsUrl}/${post.id}`;
+    const updateUrl=`${this.Url}/${post.id}`;
     return this.http.put<Post>(updateUrl, post, httpOptions);
   }
+
+  // deletePost(post:Post):Observable<Post>{    
+  //   const eliminarUrl=`${this.Url}/${post.id}`;
+  //     return this.http.delete<Post>(eliminarUrl, post,  httpOptions);
+  // }
+
+
+
+
 }
