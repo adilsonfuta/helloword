@@ -34,6 +34,10 @@ export class PostService {
   //     return this.http.delete<Post>(eliminarUrl, post,  httpOptions);
   // }
 
+  EliminarPost():Observable<Post>{    
+    const removerurl=`${this.Url}/${1}`;
+    return this.http.delete<Post>(removerurl,httpOptions);
+  }
 
 
 

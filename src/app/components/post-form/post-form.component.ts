@@ -46,6 +46,13 @@ export class PostFormComponent implements OnInit {
   // }
 
 
+DeletePOST(){
+  this.postService.EliminarPost().subscribe(post=>{
+    console.log(post.id);
+  });
+}
+
+
 
 
 
