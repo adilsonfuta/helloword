@@ -16,7 +16,7 @@ export class PostService {
 
   constructor(private http: HttpClient) { }
 
-  getPost():Observable<Post[]>{
+  getPosts():Observable<Post[]>{
       return  this.http.get<Post[]>(this.Url);
   }
 
@@ -35,5 +35,9 @@ export class PostService {
     return this.http.delete<Post>(removerurl,httpOptions);
   }
 
+  getPost(id:number):Observable<Post> {  
+    const getUrl=`${this.Url}/${id}`;
+    return this.http.get<Post>(getUrl);
+  }
 
 }
