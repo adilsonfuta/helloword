@@ -29,16 +29,11 @@ export class PostService {
     return this.http.put<Post>(updateUrl, post, httpOptions);
   }
 
-  // deletePost(post:Post):Observable<Post>{    
-  //   const eliminarUrl=`${this.Url}/${post.id}`;
-  //     return this.http.delete<Post>(eliminarUrl, post,  httpOptions);
-  // }
-
-  EliminarPost():Observable<Post>{    
-    const removerurl=`${this.Url}/${1}`;
+  removePost(post:Post| number):Observable<Post>{    
+    const id=typeof post ==='number' ? post : post.id;
+    const removerurl=`${this.Url}/${id}`;
     return this.http.delete<Post>(removerurl,httpOptions);
   }
-
 
 
 }

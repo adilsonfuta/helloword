@@ -39,20 +39,6 @@ export class PostFormComponent implements OnInit {
   }
 
 
-  // RemovePost(){
-  //   this.postService.deletePost(this.currentPost).subscribe(post=>{
-  //     console.log(post);
-  //   });
-  // }
-
-
-DeletePOST(){
-  this.postService.EliminarPost().subscribe(post=>{
-    console.log(post.id);
-  });
-}
-
-
 
 
 

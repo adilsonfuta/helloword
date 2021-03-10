@@ -33,6 +33,10 @@ export class PostsComponent implements OnInit {
   onNewPost(post:Post){
     this.posts.unshift(post);
   }
+  editPost(post:Post){
+    this.currentPost=post;
+    this.isEdit=true;
+  }
 
   onUpdatedPost(post:Post){
     this.posts.forEach((cur, index) => {
@@ -49,10 +53,21 @@ export class PostsComponent implements OnInit {
     });
   }
 
-  editPost(post:Post){
-    this.currentPost=post;
-    this.isEdit=true;
+
+  removePost(post: Post){
+    if(confirm('Deseja Eliminar ?')){
+      this.postService.removePost(post.id).subscribe(
+        ()=>{
+            this.posts.forEach((cur,index)=>{
+              if(post.id==cur.id){
+                this.posts.splice(index,1);
+              }
+            } )
+        }
+      )
+    }
   }
+
 
 
   
