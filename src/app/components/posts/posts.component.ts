@@ -18,15 +18,15 @@ export class PostsComponent implements OnInit {
 
   isEdit:boolean=false;
 
-  constructor(private postService: PostService) { }
+  constructor(private postService: PostService) {
+    
+ 
 
-  ngOnInit() {
+   }
 
-    this.postService.getPosts().subscribe(posts=>{
-     // console.log(posts);
-     this.posts=posts;
-    })
-
+  ngOnInit() { 
+   this.postService.getPosts().subscribe(posts=>{
+     this.posts=posts;  })
   }
 
 
