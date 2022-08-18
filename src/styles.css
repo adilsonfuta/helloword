@@ -1,9 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
-
-
-
+/* You can add global styles to this file, and also import other style files 
+* apos  angular.json  chamamos o link para reconhecido em toda parte do projecto
+*/
 @import '../node_modules/bootstrap/dist/css/bootstrap.css';
+ @import '../node_modules//@fortawesome/fontawesome-free/css/all.css';
 
-/* @import '../node_modules/@fortawesome/fontawesome-free/css/fontawesome.css'; */
 
-/* apos a configuração no angular.json aqui chamamos o link afim de ser reconhecido em toda parte do projecto...  */
+@font-face {
+    font-family: 'Nunito Sans', sans-serif;
+     src: url('./assets/Nunito_Sans/NunitoSans-Bold.ttf');
+   }
