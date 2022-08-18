@@ -3,13 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve -o",
     "start:port": "ng serve -o --port 3333",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "ligar": "ng serve -o"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
