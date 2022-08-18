@@ -4,11 +4,9 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FormsModule } from "@angular/forms";
 import {HttpClientModule} from '@angular/common/http';
-
 import { UserComponet } from './components/user/user.component';
 import { UsersListComponent } from './components/users-list/users-list.component';
 import {UserService} from './services/user.service';
-
 import { PostsComponent } from './components/posts/posts.component';
 import {PostService} from './services/post.service';
 import { PostFormComponent } from './components/post-form/post-form.component';
